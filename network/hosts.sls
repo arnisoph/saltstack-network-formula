@@ -1,7 +1,7 @@
 {% from "network/defaults.yaml" import rawmap with context %}
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('network:lookup')) %}
 
-{% set hosts = datamap['default_hosts'] %}
+{% set hosts = datamap['hosts']['def_entries'] %}
 
 {% if salt['pillar.get']('network:hosts', False) %}
   {% set hosts = hosts + salt['pillar.get']('network:hosts') %}
@@ -10,7 +10,7 @@
 {% for h in hosts %}
 host-{{ h['name'] }}_{{ h['ip'] }}:
   host:
-    - {{ h['ensure']|default(datamap['host_defaults']['ensure']) }}
+    - {{ h['ensure']|default(datamap['hosts']['values']['ensure']) }}
     - ip: {{ h['ip'] }}
     - name: {{ h['name'] }}
 {% endfor %}

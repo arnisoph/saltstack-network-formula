@@ -1,41 +1,44 @@
 {% load_yaml as rawmap %}
 Debian:
-  interface_defaults:
-    enabled: True
-    proto: dhcp
-    type: eth
-  default_interfaces:
-    - name: lo
-      proto: loopback
+  interfaces:
+    values:
+      enabled: True
+      proto: dhcp
       type: eth
-  resolver_defaults:
-    path: /etc/resolv.conf
-  host_defaults:
-    path: /etc/hosts
-    ensure: present
-  default_hosts:
-    - name: localhost
-      ip: 127.0.0.1
-    - name: localhost.localdomain
-      ip: 127.0.0.1
-    - name: localhost
-      ip: ::1
-    - name: ip6-localhost
-      ip: ::1
-    - name: ip6-loopback
-      ip: ::1
-    - name: ip6-localnet
-      ip: fe00::0
-    - name: ip6-mcastprefix
-      ip: ff00::0
-    - name: ip6-allnodes
-      ip: ff02::1
-    - name: ip6-allrouters
-      ip: ff02::2
-    - name: ip6-allhosts
-      ip: ff02::3
-    - name: {{ salt['grains.get']('fqdn') }}
-      ip: 127.0.1.1
-    - name: {{ salt['grains.get']('host') }}
-      ip: 127.0.1.1
+    def_entries:
+      - name: lo
+        proto: loopback
+        type: eth
+  resolver:
+    values:
+      path: /etc/resolv.conf
+  hosts:
+    values:
+      path: /etc/hosts
+      ensure: present
+    def_entries:
+      - name: localhost
+        ip: 127.0.0.1
+      - name: localhost.localdomain
+        ip: 127.0.0.1
+      - name: localhost
+        ip: ::1
+      - name: ip6-localhost
+        ip: ::1
+      - name: ip6-loopback
+        ip: ::1
+      - name: ip6-localnet
+        ip: fe00::0
+      - name: ip6-mcastprefix
+        ip: ff00::0
+      - name: ip6-allnodes
+        ip: ff02::1
+      - name: ip6-allrouters
+        ip: ff02::2
+      - name: ip6-allhosts
+        ip: ff02::3
+      - name: {{ salt['grains.get']('fqdn') }}
+        ip: 127.0.1.1
+      - name: {{ salt['grains.get']('host') }}
+        ip: 127.0.1.1
 {% endload %}
