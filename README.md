@@ -20,6 +20,10 @@ Salt Stack Formula to set up and configure a host's network configuration
 
 ## Available states
 
+### network.hosts
+
+Sets the static lookup table for hostnames
+
 ### network.interfaces
 
 Sets the network interfaces configuration

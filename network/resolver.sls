@@ -4,7 +4,7 @@
 resolver:
   file:
     - managed
-    - name: {{ datamap['resolver']['path'] }}
+    - name: {{ datamap['resolver_defaults']['path'] }}
     - mode: '0644'
     - user: root
     - group: root

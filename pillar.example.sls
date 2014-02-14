@@ -20,3 +20,12 @@ network:
     options:
       - rotate
       - timeout:1
+  hosts:
+    - name: example.com
+      ip: 192.168.2.100
+    - name: example.org
+      ip: 192.168.2.150
+      ensure: present
+    - name: example.net
+      ip: 192.168.2.200
+      ensure: absent
