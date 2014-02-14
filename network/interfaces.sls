@@ -3,7 +3,7 @@
 
 {% set interfaces = datamap['default_interfaces'] %}
 
-{% if salt['pillar.get']('network:interfaces') is defined %}
+{% if salt['pillar.get']('network:interfaces', False) %}
   {% set interfaces = interfaces + salt['pillar.get']('network:interfaces') %}
 {% endif %}
 

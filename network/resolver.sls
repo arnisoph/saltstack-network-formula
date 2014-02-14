@@ -9,23 +9,23 @@ resolver:
     - user: root
     - group: root
     - contents: |
-{%- if salt['pillar.get']('network:resolver:file_prepend') is defined %}
+{%- if salt['pillar.get']('network:resolver:file_prepend', False) %}
         {{ salt['pillar.get']('network:resolver:file_prepend') }}
 {%- endif -%}
-{% if salt['pillar.get']('network:resolver:domain') is defined %}
+{% if salt['pillar.get']('network:resolver:domain', False) %}
         domain: {{ salt['pillar.get']('network:resolver:domain') }}
 {%- endif -%}
-{%- if salt['pillar.get']('network:resolver:search') is defined %}
+{%- if salt['pillar.get']('network:resolver:search', False) %}
         search: {{ salt['pillar.get']('network:resolver:search') }}
 {%- endif -%}
-{%- if salt['pillar.get']('network:resolver:nameservers') is defined -%}
+{%- if salt['pillar.get']('network:resolver:nameservers', False) -%}
   {%- for n in salt['pillar.get']('network:resolver:nameservers') %}
         nameserver: {{ n }}
   {%- endfor -%}
 {%- endif -%}
-{%- if salt['pillar.get']('network:resolver:options') is defined %}
+{%- if salt['pillar.get']('network:resolver:options', False) %}
         options: {{ salt['pillar.get']('network:resolver:options')|join(' ') }}
 {%- endif -%}
-{%- if salt['pillar.get']('network:resolver:file_append') is defined %}
+{%- if salt['pillar.get']('network:resolver:file_append', False) %}
         {{ salt['pillar.get']('network:resolver:file_append') }}
 {%- endif %}
