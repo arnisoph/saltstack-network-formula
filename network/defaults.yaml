@@ -1,0 +1,11 @@
+{% load_yaml as rawmap %}
+Debian:
+  defaults:
+    enabled: True
+    proto: dhcp
+    type: eth
+  default_interfaces:
+    - name: lo
+      proto: loopback
+      type: eth
+{% endload %}
