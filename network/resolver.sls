@@ -16,7 +16,7 @@ resolver:
         domain: {{ salt['pillar.get']('network:resolver:domain') }}
 {%- endif -%}
 {%- if salt['pillar.get']('network:resolver:search', False) %}
-        search: {{ salt['pillar.get']('network:resolver:search') }}
+        search: {{ salt['pillar.get']('network:resolver:search')|join(' ') }}
 {%- endif -%}
 {%- if salt['pillar.get']('network:resolver:nameservers', False) -%}
   {%- for n in salt['pillar.get']('network:resolver:nameservers') %}

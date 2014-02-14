@@ -11,7 +11,9 @@ network:
     - name: eth2
   resolver:
     domain: domain.local
-    search: domain.local
+    search:
+      - domain.local
+      - another.local
     nameservers:
       - 192.168.2.1
       - 2002::beef
