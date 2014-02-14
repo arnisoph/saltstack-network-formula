@@ -12,9 +12,9 @@ network-{{ n['name'] }}:
   network:
     - managed
     - name: {{ n['name'] }}
-    - enabled: {{ n['enabled']|default(datamap['defaults']['enabled']) }}
-    - proto: {{ n['proto']|default(datamap['defaults']['proto']) }}
-    - type: {{ n['type']|default(datamap['defaults']['type']) }}
+    - enabled: {{ n['enabled']|default(datamap['interface_defaults']['enabled']) }}
+    - proto: {{ n['proto']|default(datamap['interface_defaults']['proto']) }}
+    - type: {{ n['type']|default(datamap['interface_defaults']['type']) }}
   {% if n['proto'] in ['static'] %}
     {% if n['ipaddr'] is defined %}
     - ipaddr: {{ n['ipaddr'] }}

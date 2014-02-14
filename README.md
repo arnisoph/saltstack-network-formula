@@ -8,7 +8,7 @@ Salt Stack Formula to set up and configure a host's network configuration
 
 ## TODO
 
-None
+* Use more of the available options in interfaces.sls of network.managed
 
 ## Instructions
 
@@ -20,9 +20,13 @@ None
 
 ## Available states
 
-### network
+### network.interfaces
 
-\#TODO
+Sets the network interfaces configuration
+
+### network.resolver
+
+Sets the resolver configuration
 
 ## Additional resources
 
@@ -36,4 +40,4 @@ None
 
 *DOES* work on:
 
-* GNU/ Linux Debian Wheezy
+* GNU/ Linux Debian Wheezy (Salt: 2014.1.0)

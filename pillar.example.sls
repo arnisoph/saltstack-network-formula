@@ -9,3 +9,12 @@ network:
       netmask: 255.255.255.0
       gateway: 192.168.2.1
     - name: eth2
+  resolver:
+    domain: domain.local
+    search: domain.local
+    nameservers:
+      - 192.168.2.1
+      - 2002::beef
+    options:
+      - rotate
+      - timeout:1

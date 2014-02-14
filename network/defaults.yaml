@@ -1,9 +1,11 @@
 {% load_yaml as rawmap %}
 Debian:
-  defaults:
+  interface_defaults:
     enabled: True
     proto: dhcp
     type: eth
+  resolver:
+    path: /etc/resolv.conf
   default_interfaces:
     - name: lo
       proto: loopback
