@@ -3,6 +3,12 @@
 
 {% set interfaces = datamap['interfaces']['def_entries'] %}
 
+{%- macro set_p(paramname, dictvar) -%}
+  {%- if paramname in dictvar -%}
+- {{ paramname }}: {{ dictvar[paramname] }}
+  {%- endif -%}
+{%- endmacro -%}
+
 {% if salt['pillar.get']('network:interfaces', False) %}
   {% set interfaces = interfaces + salt['pillar.get']('network:interfaces') %}
 {% endif %}
@@ -15,15 +21,13 @@ network-{{ n['name'] }}:
     - enabled: {{ n['enabled']|default(datamap['interfaces']['values']['enabled']) }}
     - proto: {{ n['proto']|default(datamap['interfaces']['values']['proto']) }}
     - type: {{ n['type']|default(datamap['interfaces']['values']['type']) }}
-  {% if n['proto'] in ['static'] %}
-    {% if n['ipaddr'] is defined %}
-    - ipaddr: {{ n['ipaddr'] }}
+    {% for p in datamap['interfaces']['params_supported'] %}
+    {{ set_p(p, n) }}
+    {% endfor %}
+    {% if n['use'] is defined %}
+    - use:
+      {% for u in n['use'] %}
+      - network: network-{{ u }}
+      {% endfor %}
     {% endif %}
-    {% if n['gateway'] is defined %}
-    - gateway: {{ n['gateway'] }}
-    {% endif %}
-    {% if n['netmask'] is defined %}
-    - netmask: {{ n['netmask'] }}
-    {% endif %}
-  {% endif %}
 {% endfor %}

@@ -40,8 +40,23 @@ None
 
 None
 
-## Compatibility
+## Contributions
 
-*DOES* work on:
+Contributions are always welcome. All development guidelines you have to know are
 
-* GNU/ Linux Debian Wheezy (Salt: 2014.1.0)
+* write clean code (proper YAML+Jinja syntax, no trailing whitespaces, no empty lines with whitespaces, LF only)
+* set sane default settings
+* test your code
+* update README.md doc
+
+## Salt Compatibility
+
+Tested with:
+
+* 2014.1.0
+
+## OS Compatibility
+
+Tested with:
+
+* GNU/ Linux Debian Wheezy

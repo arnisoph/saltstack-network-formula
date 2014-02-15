@@ -5,6 +5,20 @@ Debian:
       enabled: True
       proto: dhcp
       type: eth
+    params_supported:
+      - ipaddr
+      - gateway
+      - netmask
+      - bridge
+      - ports
+      - delay
+      - stp
+      - maxwait
+      - fd
+      - pre_up_cmds
+      - pre_down_cmds
+      - post_up_cmds
+      - post_down_cmds
     def_entries:
       - name: lo
         proto: loopback
