@@ -1,5 +1,6 @@
 network:
   interfaces:
+    {# Basic Setup #}
     - name: eth0
       proto: dhcp
       type: eth
@@ -9,6 +10,38 @@ network:
       netmask: 255.255.255.0
       gateway: 192.168.2.1
     - name: eth2
+
+    {# Bridge Setup #}
+    - name: eth0
+      proto: static
+      type: eth
+      ipaddr: 172.16.34.10
+      netmask: 255.255.255.0
+      post_up_cmds:
+        - brctl addif br0 eth0
+      pre_down_cmds:
+        - brctl delif br0 eth0
+    - name: br0
+      proto: static
+      type: bridge
+      ipaddr: 172.16.34.10
+      netmask: 255.255.255.0
+      delay: 0
+      ports: eth0
+      stp: off
+      maxwait: 0
+      fd: 0
+      pre_up_cmds:
+        - brctl addbr br0
+      post_down_cmds:
+        - brctl delbr br0
+    - name: eth1
+      proto: static
+      type: eth
+      ipaddr: 192.168.2.31
+      netmask: 255.255.255.0
+      gateway: 192.168.2.1
+
   resolver:
     domain: domain.local
     search:
@@ -20,6 +53,7 @@ network:
     options:
       - rotate
       - timeout:1
+
   hosts:
     - name: example.com
       ip: 192.168.2.100
