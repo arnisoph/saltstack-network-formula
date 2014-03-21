@@ -9,6 +9,7 @@ Salt Stack Formula to set up and configure a host's network configuration
 ## TODO
 
 * Use more of the available options in interfaces.sls of network.managed
+* interfaces: configure broadcast if set
 
 ## Instructions
 
