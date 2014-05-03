@@ -5,7 +5,7 @@ resolver:
   file:
     - managed
     - name: {{ datamap['resolver']['values']['path'] }}
-    - mode: '0644'
+    - mode: 644
     - user: root
     - group: root
     - contents: |
