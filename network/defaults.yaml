@@ -56,4 +56,63 @@ Debian:
         ip: 127.0.1.1
       - name: {{ salt['grains.get']('host') }}
         ip: 127.0.1.1
+RedHat:
+  interfaces:
+    values:
+      enabled: True
+      proto: dhcp
+      type: eth
+    params_supported:
+      - ipaddr
+      - gateway
+      - netmask
+      - bridge
+      - ports
+      - delay
+      - stp
+      - maxwait
+      - fd
+      - pre_up_cmds
+      - pre_down_cmds
+      - post_up_cmds
+      - post_down_cmds
+      #TODO - broadcast
+    def_entries: []
+#      - name: lo
+#        proto: none
+#        type: eth
+#        netmask: 255.0.0.0
+#        network: 127.0.0.0
+  resolver:
+    values:
+      path: /etc/resolv.conf
+  hosts:
+    values:
+      path: /etc/hosts
+      ensure: present
+    def_entries:
+      - name: localhost
+        ip: 127.0.0.1
+      - name: localhost.localdomain
+        ip: 127.0.0.1
+      - name: localhost
+        ip: ::1
+      - name: ip6-localhost
+        ip: ::1
+      - name: ip6-loopback
+        ip: ::1
+      - name: ip6-localnet
+        ip: fe00::0
+      - name: ip6-mcastprefix
+        ip: ff00::0
+      - name: ip6-allnodes
+        ip: ff02::1
+      - name: ip6-allrouters
+        ip: ff02::2
+      - name: ip6-allhosts
+        ip: ff02::3
+      - name: {{ salt['grains.get']('fqdn') }}
+        ip: 127.0.1.1
+      - name: {{ salt['grains.get']('host') }}
+        ip: 127.0.1.1
 {% endload %}
