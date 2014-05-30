@@ -1,8 +1,8 @@
 {% load_yaml as rawmap %}
 Debian:
   interfaces:
-    values:
-      enabled: True
+    default_values:
+      enable: True
       proto: dhcp
       type: eth
     params_supported:
@@ -59,7 +59,7 @@ Debian:
 RedHat:
   interfaces:
     values:
-      enabled: True
+      enable: True
       proto: dhcp
       type: eth
     params_supported:

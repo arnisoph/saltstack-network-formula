@@ -20,9 +20,9 @@ network-{{ n.name }}:
   network:
     - managed
     - name: {{ n.name }}
-    - enabled: {{ n.enabled|default(datamap.interfaces.values.enabled) }}
-    - proto: {{ n.proto|default(datamap.interfaces.values.proto) }}
-    - type: {{ n.type|default(datamap.interfaces.values.type) }}
+    - enabled: {{ n.enable|default(datamap.interfaces.default_values.enable) }}
+    - proto: {{ n.proto|default(datamap.interfaces.default_values.proto) }}
+    - type: {{ n.type|default(datamap.interfaces.default_values.type) }}
     {% for p in datamap.interfaces.params_supported %}
     {{ set_p(p, n) }}
     {% endfor %}
