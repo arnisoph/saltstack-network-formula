@@ -15,6 +15,9 @@
   {% set interfaces = interfaces + salt['pillar.get']('network:interfaces') %}
 {% endif %}
 
+{# http://stackoverflow.com/questions/4870346/can-a-jinja-variables-scope-extend-beyond-in-an-inner-block #}
+{%- set vlanRequired = [] -%}
+
 {% for n in interfaces %}
 network-{{ n.name }}:
   network:
@@ -32,4 +35,14 @@ network-{{ n.name }}:
       - network: network-{{ u }}
       {% endfor %}
     {% endif %}
+    {% if n.type == 'vlan' %}
+    {% do vlanRequired.append(1) -%}
+    - require:
+      - pkg: vlan
+    {% endif %}
 {% endfor %}
+
+{% if vlanRequired %}
+vlan:
+  pkg.installed
+{% endif %}
