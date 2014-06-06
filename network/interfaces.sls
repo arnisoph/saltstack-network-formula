@@ -4,6 +4,7 @@
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('network:lookup')) %}
 
 {% set interfaces = datamap.interfaces.def_entries %}
+{% set pkgs = datamap.interfaces.pkgs|default([]) %}
 
 {%- macro set_p(paramname, dictvar) -%}
   {%- if paramname in dictvar -%}
@@ -15,9 +16,6 @@
   {% set interfaces = interfaces + salt['pillar.get']('network:interfaces') %}
 {% endif %}
 
-{# http://stackoverflow.com/questions/4870346/can-a-jinja-variables-scope-extend-beyond-in-an-inner-block #}
-{%- set vlanRequired = [] -%}
-
 {% for n in interfaces %}
 network-{{ n.name }}:
   network:
@@ -26,23 +24,25 @@ network-{{ n.name }}:
     - enabled: {{ n.enable|default(datamap.interfaces.default_values.enable) }}
     - proto: {{ n.proto|default(datamap.interfaces.default_values.proto) }}
     - type: {{ n.type|default(datamap.interfaces.default_values.type) }}
-    {% for p in datamap.interfaces.params_supported %}
+  {% for p in datamap.interfaces.params_supported %}
     {{ set_p(p, n) }}
-    {% endfor %}
-    {% if n.use is defined %}
+  {% endfor %}
+  {% if n.use is defined %}
     - use:
       {% for u in n.use %}
       - network: network-{{ u }}
       {% endfor %}
-    {% endif %}
-    {% if n.type == 'vlan' %}
-    {% do vlanRequired.append(1) -%}
+  {% endif %}
+  {% if n.type|default(datamap.interfaces.default_values.type) == 'vlan' and datamap.interfaces.vlan_pkg|default('vlan') %}
+    {% do pkgs.append(datamap.interfaces.vlan_pkg|default('vlan')) %}
     - require:
-      - pkg: vlan
-    {% endif %}
+      - pkg: packages
+  {% endif %}
 {% endfor %}
 
-{% if vlanRequired %}
-vlan:
-  pkg.installed
+{% if pkgs|length > 0 %}
+packages:
+  pkg:
+    - installed
+    - pkgs: {{ pkgs }}
 {% endif %}

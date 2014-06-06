@@ -1,6 +1,7 @@
 {% load_yaml as rawmap %}
 Debian:
   interfaces:
+    pkgs: []
     default_values:
       enable: True
       proto: dhcp
@@ -58,6 +59,8 @@ Debian:
         ip: 127.0.1.1
 RedHat:
   interfaces:
+    pkgs: []
+    vlan_pkg: False
     values:
       enable: True
       proto: dhcp
