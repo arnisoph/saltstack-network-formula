@@ -33,6 +33,15 @@ network-{{ n.name }}:
       - network: network-{{ u }}
       {% endfor %}
   {% endif %}
+  {% if n.provider is defined %}
+    - provider: {{ n.provider }}
+  {% endif %}
+  {% if n.user is defined %}
+    - user: {{ n.user }}
+  {% endif %}
+  {% if n.pass is defined %}
+    - pass: {{ n.pass }}
+  {% endif %}
   {% if n.type|default(datamap.interfaces.default_values.type) == 'vlan' and datamap.interfaces.vlan_pkg|default('vlan') %}
     {% do pkgs.append(datamap.interfaces.vlan_pkg|default('vlan')) %}
     - require:
