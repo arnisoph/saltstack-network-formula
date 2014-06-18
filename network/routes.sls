@@ -3,13 +3,6 @@
 {% from "network/defaults.yaml" import rawmap with context %}
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('network')) %}
 
-{%- macro set_p(paramname, dictvar) -%}
-  {%- if paramname in dictvar -%}
-        {{ paramname }}: {{ dictvar[paramname] }}
-  {%- endif -%}
-{%- endmacro -%}
-
-
 {% for r in datamap.routes %}
 {{ r.name }}:
   network.routes:
