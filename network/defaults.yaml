@@ -21,6 +21,10 @@ Debian:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
+      # bonding
+      - master
+      - mode
+      - slaves
       #TODO - broadcast
     def_entries:
       - name: lo
@@ -80,6 +84,10 @@ RedHat:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
+      # bonding
+      - master
+      - mode
+      - slaves
       #TODO - broadcast
     def_entries: []
 #      - name: lo
