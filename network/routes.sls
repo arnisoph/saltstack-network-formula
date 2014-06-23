@@ -8,8 +8,9 @@
    for code convention reasons. Unfortunately 'routes' is also used in **kwargs when calling ip.build_routes
    in salt.states.network #}
 {% for r in datamap.routes|default([]) %}
-{{ r.name }}:
+routes_{{ r.name }}:
   network.routes:
+    - name: {{ r.name }}
     - routes:
   {% for n in r.networks %}
       - name: {{ n.name }}
