@@ -42,6 +42,10 @@ Sets the network interfaces configuration
 --------------------
 Sets the resolver configuration
 
+``network.routes``
+------------------
+Manages network routes
+
 Additional resources
 ====================
 

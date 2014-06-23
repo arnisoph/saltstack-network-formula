@@ -21,7 +21,7 @@ Debian:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
-      # bonding
+      {#- bonding #}
       - master
       - mode
       - slaves
@@ -84,7 +84,7 @@ RedHat:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
-      # bonding
+      {#- bonding #}
       - master
       - mode
       - slaves

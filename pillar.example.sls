@@ -67,8 +67,8 @@ network:
   routes:
     - name: eth1
       networks:
-        - name: for_lan 
-          ipaddr: 172.16.0.0 
+        - name: for_lan
+          ipaddr: 172.16.0.0
           netmask: 255.255.0.0
-          gateway: 192.168.2.1 
-                                
+          gateway: 192.168.2.1
+
