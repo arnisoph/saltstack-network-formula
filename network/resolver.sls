@@ -24,7 +24,7 @@ resolver:
   {%- endfor -%}
 {%- endif -%}
 {%- if salt['pillar.get']('network:resolver:options', False) %}
-        options {{ salt['pillar.get']('network:resolver:options')|join(' ') }}
+        options {{ salt['pillar.get']('network:resolver:options')|sort|join(' ') }}
 {%- endif -%}
 {%- if salt['pillar.get']('network:resolver:file_append', False) %}
         {{ salt['pillar.get']('network:resolver:file_append') }}
