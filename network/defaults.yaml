@@ -1,3 +1,4 @@
+# vim: sts=2 ts=2 sw=2 et ai
 {% load_yaml as rawmap %}
 Debian:
   interfaces:
@@ -20,6 +21,10 @@ Debian:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
+      # bonding
+      - master
+      - mode
+      - slaves
       #TODO - broadcast
     def_entries:
       - name: lo
@@ -79,6 +84,10 @@ RedHat:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
+      # bonding
+      - master
+      - mode
+      - slaves
       #TODO - broadcast
     def_entries: []
 #      - name: lo
