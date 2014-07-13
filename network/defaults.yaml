@@ -36,7 +36,6 @@ Debian:
   hosts:
     values:
       path: /etc/hosts
-      ensure: present
     def_entries:
       - name: localhost
         ip: 127.0.0.1
@@ -58,10 +57,6 @@ Debian:
         ip: ff02::2
       - name: ip6-allhosts
         ip: ff02::3
-      - name: {{ salt['grains.get']('fqdn') }}
-        ip: 127.0.1.1
-      - name: {{ salt['grains.get']('host') }}
-        ip: 127.0.1.1
 RedHat:
   interfaces:
     pkgs: []
@@ -101,7 +96,6 @@ RedHat:
   hosts:
     values:
       path: /etc/hosts
-      ensure: present
     def_entries:
       - name: localhost
         ip: 127.0.0.1
@@ -123,8 +117,4 @@ RedHat:
         ip: ff02::2
       - name: ip6-allhosts
         ip: ff02::3
-      - name: {{ salt['grains.get']('fqdn') }}
-        ip: 127.0.1.1
-      - name: {{ salt['grains.get']('host') }}
-        ip: 127.0.1.1
 {% endload %}
