@@ -17,12 +17,11 @@
 {% endif %}
 
 {% for n in interfaces %}
-network-{{ n.name }}:
+network_{{ n.name }}:
   network:
     - managed
     - name: {{ n.name }}
-    - enabled: {{ n.enable|default(datamap.interfaces.default_values.enable) }}
-    - proto: {{ n.proto|default(datamap.interfaces.default_values.proto) }}
+    - enabled: {{ n.enabled|default(datamap.interfaces.default_values.enabled) }}
     - type: {{ n.type|default(datamap.interfaces.default_values.type) }}
   {% for p in datamap.interfaces.params_supported %}
     {{ set_p(p, n) }}
@@ -30,7 +29,7 @@ network-{{ n.name }}:
   {% if n.use is defined %}
     - use:
       {% for u in n.use %}
-      - network: network-{{ u }}
+      - network: network_{{ u }}
       {% endfor %}
   {% endif %}
   {% if n.provider is defined %}

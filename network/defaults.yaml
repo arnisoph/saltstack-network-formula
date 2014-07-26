@@ -4,10 +4,10 @@ Debian:
   interfaces:
     pkgs: []
     default_values:
-      enable: True
-      proto: dhcp
+      enabled: True
       type: eth
     params_supported:
+      - proto
       - ipaddr
       - gateway
       - netmask
@@ -26,6 +26,12 @@ Debian:
       - mode
       - slaves
       #TODO - broadcast
+      # IPV6
+      - enable_ipv6
+      - ipv6proto
+      - ipv6ipaddr
+      - ipv6netmask
+      - ipv6gateway
     def_entries:
       - name: lo
         proto: loopback
@@ -61,11 +67,11 @@ RedHat:
   interfaces:
     pkgs: []
     vlan_pkg: False
-    values:
-      enable: True
-      proto: dhcp
+    default_values:
+      enabled: True
       type: eth
     params_supported:
+      - proto
       - ipaddr
       - gateway
       - netmask
@@ -84,6 +90,12 @@ RedHat:
       - mode
       - slaves
       #TODO - broadcast
+      # IPV6
+      - enable_ipv6
+      - ipv6proto
+      - ipv6ipaddr
+      - ipv6netmask
+      - ipv6gateway
     def_entries: []
 #      - name: lo
 #        proto: none
