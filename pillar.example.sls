@@ -43,7 +43,7 @@ network:
       gateway: 192.168.2.1
       enable_ipv6: True
       ipv6proto: static
-      ipv6ipaddr: '2a03:4000:c:100::a'
+      ipv6ipaddr: '2a03:beef:42::a'
       ipv6netmask: 64
       ipv6gateway: 'fe80::1'
 
