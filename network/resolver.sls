@@ -9,7 +9,6 @@ resolver:
     - name: {{ datamap.resolver.path|default('/etc/resolv.conf') }}
     - mode: 644
     - user: root
-    - group: root
     - contents: |
 {%- if salt['pillar.get']('network:resolver:file_prepend', False) %}
         {{ salt['pillar.get']('network:resolver:file_prepend') }}
