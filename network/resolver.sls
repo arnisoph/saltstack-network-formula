@@ -1,10 +1,12 @@
+#!jinja|yaml
+
 {% from "network/defaults.yaml" import rawmap with context %}
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('network:lookup')) %}
 
 resolver:
   file:
     - managed
-    - name: {{ datamap['resolver']['values']['path'] }}
+    - name: {{ datamap.resolver.path|default('/etc/resolv.conf') }}
     - mode: 644
     - user: root
     - group: root

@@ -1,4 +1,3 @@
-# vim: sts=2 ts=2 sw=2 et ai
 {% load_yaml as rawmap %}
 Debian:
   interfaces:
@@ -36,12 +35,8 @@ Debian:
       - name: lo
         proto: loopback
         type: eth
-  resolver:
-    values:
-      path: /etc/resolv.conf
+  resolver: {}
   hosts:
-    values:
-      path: /etc/hosts
     def_entries:
       - name: localhost
         ip: 127.0.0.1
@@ -102,12 +97,8 @@ RedHat:
 #        type: eth
 #        netmask: 255.0.0.0
 #        network: 127.0.0.0
-  resolver:
-    values:
-      path: /etc/resolv.conf
+  resolver: {}
   hosts:
-    values:
-      path: /etc/hosts
     def_entries:
       - name: localhost
         ip: 127.0.0.1
