@@ -7,9 +7,9 @@ resolver:
   file:
     - managed
     - name: {{ datamap.resolver.path|default('/etc/resolv.conf') }}
-    - mode: 644
-    - user: root
-    - group: root
+    - mode: {{ datamap.resolver.mode|default(644) }}
+    - user: {{ datamap.resolver.user|default('root') }}
+    - group: {{ datamap.resolver.group|default('root') }}
     - contents: |
 {%- if salt['pillar.get']('network:resolver:file_prepend', False) %}
         {{ salt['pillar.get']('network:resolver:file_prepend') }}
