@@ -120,4 +120,8 @@ RedHat:
         ip: ff02::2
       - name: ip6-allhosts
         ip: ff02::3
+FreeBSD:
+  resolver:
+    values:
+      path: /etc/resolv.conf
 {% endload %}
