@@ -1,5 +1,9 @@
 network:
   interfaces:
+    {# Disable default interface entries #}
+    interfaces:
+      def_entries: []
+
     {# Basic Setup #}
     - name: eth0
       proto: dhcp
