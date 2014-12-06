@@ -74,7 +74,7 @@ network:
       ensure: absent
 
   routes:
-    - name: eth1
+    eth1:
       networks:
         - name: for_lan
           ipaddr: 172.16.0.0

@@ -6,15 +6,16 @@
 {# TODO: The function name 'routes' in 'network.routes' should be moved into the list as soon as it's possible
    for code convention reasons. Unfortunately 'routes' is also used in **kwargs when calling ip.build_routes
    in salt.states.network #}
-{% for r in datamap.routes|default([]) %}
-routes_{{ r.name }}:
+
+{% for k, v in datamap.routes|default({})|dictsort %}
+routes_{{ v.name|default(k) }}:
   network.routes:
-    - name: {{ r.name }}
+    - name: {{ v.name|default(k) }}
     - routes:
-  {% for n in r.networks %}
-      - name: {{ n.name }}
-        ipaddr: {{ n.ipaddr }}
-        netmask: {{ n.netmask }}
-        gateway: {{ n.gateway }}
+  {% for net in v.networks %}
+      - name: {{ net.name }}
+        ipaddr: {{ net.ipaddr }}
+        netmask: {{ net.netmask }}
+        gateway: {{ net.gateway }}
   {% endfor %}
 {% endfor %}
