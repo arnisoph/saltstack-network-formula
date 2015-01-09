@@ -84,3 +84,10 @@ Tested with:
 
 * GNU/ Linux Debian Wheezy
 * CentOS 6 (not completly tested)
+
+AUTHORS
+=======
+
+Please add yourself too when contributing (sorted alphabetically)!
+
+* Arnold Bechtoldt <mail@arnoldbechtoldt.com>
