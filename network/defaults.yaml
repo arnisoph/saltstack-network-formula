@@ -124,7 +124,8 @@ RedHat:
   routes: {}
 FreeBSD:
   interfaces:
-  resolver: {}
+  resolver:
+    group: wheel
   hosts: {}
   routes: {}
 {% endload %}
