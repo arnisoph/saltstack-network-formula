@@ -16,8 +16,14 @@
   {% set interfaces = interfaces + salt['pillar.get']('network:interfaces') %}
 {% endif %}
 
-{% for n in interfaces %}
-network_{{ n.name }}:
+{% for n in interfaces -%}
+  {%- if 'ipaddr' in n -%}
+    {%- set state_id = 'network_' ~ n.name ~ '_' ~ n.ipaddr -%}
+  {%- else %}
+    {%- set state_id = 'network_' ~ n.name -%}
+  {%- endif %}
+
+{{ state_id }}:
   network:
     - managed
     - name: {{ n.name }}
