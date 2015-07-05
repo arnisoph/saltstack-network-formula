@@ -81,3 +81,10 @@ network:
           netmask: 255.255.0.0
           gateway: 192.168.2.1
 
+  # To add/remove packages here.
+  # You need to include the state network.packages in your salt.
+  pkgs:
+    purged:
+      - resolvconf
+    installed:
+      - isc-dhcp-client
