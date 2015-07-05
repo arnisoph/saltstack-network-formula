@@ -12,7 +12,17 @@
   {%- endif -%}
 {%- endmacro -%}
 
-{% if salt['pillar.get']('network:interfaces', False) %}
+{%- if 'dhclient_conf' in salt['pillar.get']('network') %}
+dhclient_conf:
+  file.managed:
+    - name: /etc/dhcp/dhclient.conf
+    - mode: 644
+    - user: root
+    - group: root
+    - contents_pillar: network:dhclient_conf
+{% endif %}
+
+{%- if salt['pillar.get']('network:interfaces', False) %}
   {% set interfaces = interfaces + salt['pillar.get']('network:interfaces') %}
 {% endif %}
 
