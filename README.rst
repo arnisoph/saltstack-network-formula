@@ -23,7 +23,7 @@ saltstack-network-formula
     :alt: Join Internet Relay Chat
     :target: http://webchat.freenode.net/?channels=%23salt&uio=d4
 
-SaltStack Formula to set up and configure a host&#39;s network configuration
+SaltStack Formula to set up and configure a host's network configuration
 
 .. contents::
     :backlinks: none
@@ -67,6 +67,7 @@ TODO
 * add tests
 * Use more of the available options in interfaces.sls of network.managed
 * interfaces: configure broadcast if set
+* rewrite using #!py renderer
 
 
 Authors

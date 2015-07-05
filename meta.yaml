@@ -8,3 +8,4 @@ todo:
   - add tests
   - Use more of the available options in interfaces.sls of network.managed
   - 'interfaces: configure broadcast if set'
+  - 'rewrite using #!py renderer'
