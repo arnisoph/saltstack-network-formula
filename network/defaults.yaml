@@ -31,6 +31,8 @@ Debian:
       - ipv6ipaddr
       - ipv6netmask
       - ipv6gateway
+
+      - noifupdown
     def_entries:
       - name: lo
         proto: loopback
@@ -92,6 +94,8 @@ RedHat:
       - ipv6ipaddr
       - ipv6netmask
       - ipv6gateway
+
+      - noifupdown
     def_entries: []
 #      - name: lo
 #        proto: none
