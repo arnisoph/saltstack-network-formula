@@ -75,6 +75,7 @@ Authors
 
 * Alan Pearce <alan@alanpearce.co.uk>
 * Arnold Bechtoldt <mail@arnoldbechtoldt.com>
+* René Jochum <rene@jochums.at>
 * Simon Lloyd <simon@slloyd.net>
 * root <root@saltmaster01.(none)>
 
