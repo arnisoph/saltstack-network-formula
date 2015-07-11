@@ -12,9 +12,10 @@
   {%- endif -%}
 {%- endmacro -%}
 
-{%- if 'dhclient_conf' in salt['pillar.get']('network') %}
+{%- if salt['pillar.get']('network:dhclient_conf', False) %}
 dhclient_conf:
-  file.managed:
+  file:
+    - managed
     - name: /etc/dhcp/dhclient.conf
     - mode: 644
     - user: root
