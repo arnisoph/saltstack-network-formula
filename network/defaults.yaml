@@ -16,6 +16,7 @@ Debian:
       - stp
       - maxwait
       - fd
+      - up_cmds
       - pre_up_cmds
       - pre_down_cmds
       - post_up_cmds
@@ -32,6 +33,10 @@ Debian:
       - ipv6ipaddr
       - ipv6netmask
       - ipv6gateway
+
+      - pointopoint
+
+      - noifupdown
     def_entries:
       - name: lo
         proto: loopback
@@ -78,6 +83,7 @@ RedHat:
       - stp
       - maxwait
       - fd
+      - up_cmds
       - pre_up_cmds
       - pre_down_cmds
       - post_up_cmds
@@ -94,6 +100,8 @@ RedHat:
       - ipv6ipaddr
       - ipv6netmask
       - ipv6gateway
+
+      - noifupdown
     def_entries: []
 #      - name: lo
 #        proto: none
