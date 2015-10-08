@@ -20,6 +20,7 @@ Debian:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
+      - noifupdown
       {#- bonding #}
       - master
       - mode
@@ -82,6 +83,7 @@ RedHat:
       - pre_down_cmds
       - post_up_cmds
       - post_down_cmds
+      - noifupdown
       {#- bonding #}
       - master
       - mode
@@ -126,7 +128,8 @@ RedHat:
   routes: {}
 FreeBSD:
   interfaces:
-  resolver: {}
+  resolver:
+    group: wheel
   hosts: {}
   routes: {}
 {% endload %}

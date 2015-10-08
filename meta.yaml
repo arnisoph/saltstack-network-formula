@@ -1,0 +1,11 @@
+name: saltstack-network-formula
+source: https://github.com/bechtoldt/saltstack-network-formula
+summary: SaltStack Formula to set up and configure a host's network configuration
+todo:
+  - add instructions how to use formhelper, add information about it in the formula-docs (dependency), show up alternative?
+  - 'table/ matrix: os/salt compatibility (dedicated file)'
+  - add list of available states
+  - add tests
+  - Use more of the available options in interfaces.sls of network.managed
+  - 'interfaces: configure broadcast if set'
+  - 'rewrite using #!py renderer'
