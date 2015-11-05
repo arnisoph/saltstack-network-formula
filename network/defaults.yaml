@@ -32,6 +32,7 @@ Debian:
       - ipv6ipaddr
       - ipv6netmask
       - ipv6gateway
+      - mtu 
     def_entries:
       - name: lo
         proto: loopback
@@ -94,6 +95,7 @@ RedHat:
       - ipv6ipaddr
       - ipv6netmask
       - ipv6gateway
+      - mtu 
     def_entries: []
 #      - name: lo
 #        proto: none
