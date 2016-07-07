@@ -66,6 +66,11 @@ dhclient_conf:
     - require:
       - pkg: packages
   {% endif %}
+  # Fixes a bug on Ubuntu Trusty where static ipv6 addresses aren't fast enough available.
+  {% if grains['os'] == 'Ubuntu' and grains['oscodename'] == 'trusty' %}
+    - post_up_cmds:
+      - /bin/sleep 2
+  {% endif %}
 {% endfor %}
 
 {% if pkgs|length > 0 %}
