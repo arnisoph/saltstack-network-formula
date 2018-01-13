@@ -16,6 +16,8 @@ routes_{{ v.name|default(k) }}:
       - name: {{ net.name }}
         ipaddr: {{ net.ipaddr }}
         netmask: {{ net.netmask }}
+        {% if net.gateway is defined %}
         gateway: {{ net.gateway }}
+        {% endif %}
   {% endfor %}
 {% endfor %}
