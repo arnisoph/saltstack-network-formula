@@ -73,6 +73,7 @@ RedHat:
       - ipaddr
       - gateway
       - netmask
+      - prefix
       - bridge
       - ports
       - delay
@@ -91,11 +92,23 @@ RedHat:
       #TODO - broadcast
       # IPV6
       - enable_ipv6
+      - ipv6_autoconf
       - ipv6proto
-      - ipv6ipaddr
-      - ipv6netmask
+      - ipv6addr
       - ipv6gateway
-      - mtu 
+      # Misc
+      - domain
+      - name
+      - uuid
+      - zone
+      - userctl
+      - peerdns
+      - defroute
+      - peerroutes
+      - ipv6_peerdns
+      - ipv6_defroute
+      - ipv6_peerroutes
+      - mtu
     def_entries: []
 #      - name: lo
 #        proto: none
